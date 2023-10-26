@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript es6 + implementation de socket</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Ma Page Élégante</h1>
+    </header>
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Services</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <section>
+        <h2>Section principale</h2>
+        <p>Ceci est le contenu principal de ma page web.</p>
+        <ul id="message"></ul>
+        <form id="form" action="">
+            <input id="imput" autocomplete="off"></input>
+            <button>Envoyer le Message</button>
+        </form>
+    </section>
+
+    <footer>
+        © 2023 Ma Page Élégante
+    </footer>
+</body>
+</html>
+
+<script src="socket.io/socket.io.js"></script>
+    <script>  var socket=io();
+        var messages = document.getElementById('messages');
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+ 
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            if(input.value){
+                socket.emit('message', input.value);
+            }
+            input.value = '';            
+        });      
+    </script>
